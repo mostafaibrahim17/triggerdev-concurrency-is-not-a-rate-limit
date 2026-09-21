@@ -1,54 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" width="880" height="430" role="img" aria-labelledby="t d" style="max-width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460" role="img" aria-labelledby="t d" style="max-width:100%;height:auto">
   <title id="t">DEV plateaus at 74% of the vendor limit; PROD climbs to 98%</title>
   <desc id="d">Median vendor throughput across three sweeps per setting. In DEV the curve flattens between 3.67 and 3.70 requests per second from a limit of 7 onward, 74 percent of the vendor's allowance. In PROD the curve rises unevenly, dipping at a limit of 15, and reaches 4.89 at a limit of 20, brushing the vendor's 5 per second. The DEV plateau was the local dev worker, not the vendor.</desc>
-  <rect width="880" height="430" fill="#ffffff"/>
-  <rect x="0.5" y="0.5" width="879" height="429" fill="none" stroke="#dbe2e8"/>
+  <rect width="1000" height="460" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="999" height="459" fill="none" stroke="#dbe2e8"/>
   <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
-  <line x1="64" y1="309.92857142857144" x2="850" y2="309.92857142857144" stroke="#e6ebef"/>
-  <text x="54" y="313.92857142857144" text-anchor="end" font-size="11" fill="#5b6a77">1</text>
-  <line x1="64" y1="253.85714285714286" x2="850" y2="253.85714285714286" stroke="#e6ebef"/>
-  <text x="54" y="257.8571428571429" text-anchor="end" font-size="11" fill="#5b6a77">2</text>
-  <line x1="64" y1="197.78571428571428" x2="850" y2="197.78571428571428" stroke="#e6ebef"/>
-  <text x="54" y="201.78571428571428" text-anchor="end" font-size="11" fill="#5b6a77">3</text>
-  <line x1="64" y1="141.71428571428572" x2="850" y2="141.71428571428572" stroke="#e6ebef"/>
-  <text x="54" y="145.71428571428572" text-anchor="end" font-size="11" fill="#5b6a77">4</text>
-  <line x1="64" y1="85.64285714285711" x2="850" y2="85.64285714285711" stroke="#e6ebef"/>
-  <text x="54" y="89.64285714285711" text-anchor="end" font-size="11" fill="#5b6a77">5</text>
-  <line x1="64" y1="366" x2="850" y2="366" stroke="#c7d1d9"/>
-  <line x1="64" y1="85.64285714285711" x2="850" y2="85.64285714285711" stroke="#8494a1" stroke-dasharray="5 4"/>
-  <text x="850" y="78.64285714285711" text-anchor="end" font-size="11" fill="#5b6a77">vendor allows 5 req/s</text>
+  <line x1="78" y1="328.1428571428571" x2="964" y2="328.1428571428571" stroke="#e6ebef"/>
+  <text x="68" y="332.1428571428571" text-anchor="end" font-size="14" fill="#5b6a77">1</text>
+  <line x1="78" y1="270.2857142857143" x2="964" y2="270.2857142857143" stroke="#e6ebef"/>
+  <text x="68" y="274.2857142857143" text-anchor="end" font-size="14" fill="#5b6a77">2</text>
+  <line x1="78" y1="212.42857142857144" x2="964" y2="212.42857142857144" stroke="#e6ebef"/>
+  <text x="68" y="216.42857142857144" text-anchor="end" font-size="14" fill="#5b6a77">3</text>
+  <line x1="78" y1="154.57142857142856" x2="964" y2="154.57142857142856" stroke="#e6ebef"/>
+  <text x="68" y="158.57142857142856" text-anchor="end" font-size="14" fill="#5b6a77">4</text>
+  <line x1="78" y1="96.71428571428572" x2="964" y2="96.71428571428572" stroke="#e6ebef"/>
+  <text x="68" y="100.71428571428572" text-anchor="end" font-size="14" fill="#5b6a77">5</text>
+  <line x1="78" y1="386" x2="964" y2="386" stroke="#c7d1d9"/>
+  <line x1="78" y1="96.71428571428572" x2="964" y2="96.71428571428572" stroke="#8494a1" stroke-dasharray="5 4"/>
+  <text x="964" y="89.71428571428572" text-anchor="end" font-size="14" fill="#5b6a77">vendor allows 5 req/s</text>
 
-  <path d="M64.0,318.3 L176.3,273.5 L288.6,237.6 L400.9,182.6 L513.1,160.2 L625.4,160.2 L737.7,158.5 L850.0,158.5" fill="none" stroke="#8494a1" stroke-width="2.5" stroke-dasharray="6 3"/>
-  <circle cx="64.0" cy="318.3" r="4" fill="#8494a1"/>
-  <circle cx="176.3" cy="273.5" r="4" fill="#8494a1"/>
-  <circle cx="288.6" cy="237.6" r="4" fill="#8494a1"/>
-  <circle cx="400.9" cy="182.6" r="4" fill="#8494a1"/>
-  <circle cx="513.1" cy="160.2" r="4" fill="#8494a1"/>
-  <circle cx="625.4" cy="160.2" r="4" fill="#8494a1"/>
-  <circle cx="737.7" cy="158.5" r="4" fill="#8494a1"/>
-  <circle cx="850.0" cy="158.5" r="4" fill="#8494a1"/>
-  <text x="850.0" y="178.5" text-anchor="end" font-size="12" font-weight="600" fill="#5b6a77">DEV, flat at 74%</text>
+  <path d="M78.0,336.8 L204.6,290.5 L331.1,253.5 L457.7,196.8 L584.3,173.7 L710.9,173.7 L837.4,171.9 L964.0,171.9" fill="none" stroke="#8494a1" stroke-width="3" stroke-dasharray="6 3"/>
+  <circle cx="78.0" cy="336.8" r="5" fill="#8494a1"/>
+  <circle cx="204.6" cy="290.5" r="5" fill="#8494a1"/>
+  <circle cx="331.1" cy="253.5" r="5" fill="#8494a1"/>
+  <circle cx="457.7" cy="196.8" r="5" fill="#8494a1"/>
+  <circle cx="584.3" cy="173.7" r="5" fill="#8494a1"/>
+  <circle cx="710.9" cy="173.7" r="5" fill="#8494a1"/>
+  <circle cx="837.4" cy="171.9" r="5" fill="#8494a1"/>
+  <circle cx="964.0" cy="171.9" r="5" fill="#8494a1"/>
+  <text x="964.0" y="191.9" text-anchor="end" font-size="15" font-weight="600" fill="#5b6a77">DEV, flat at 74%</text>
 
-  <path d="M64.0,319.5 L176.3,267.9 L288.6,237.6 L400.9,158.5 L513.1,129.9 L625.4,122.1 L737.7,151.8 L850.0,91.8" fill="none" stroke="#3b6cf6" stroke-width="2.5"/>
-  <circle cx="64.0" cy="319.5" r="4" fill="#3b6cf6"/>
-  <circle cx="176.3" cy="267.9" r="4" fill="#3b6cf6"/>
-  <circle cx="288.6" cy="237.6" r="4" fill="#3b6cf6"/>
-  <circle cx="400.9" cy="158.5" r="4" fill="#3b6cf6"/>
-  <circle cx="513.1" cy="129.9" r="4" fill="#3b6cf6"/>
-  <circle cx="625.4" cy="122.1" r="4" fill="#3b6cf6"/>
-  <circle cx="737.7" cy="151.8" r="4" fill="#3b6cf6"/>
-  <circle cx="850.0" cy="91.8" r="4" fill="#3b6cf6"/>
-  <text x="850.0" y="79.8" text-anchor="end" font-size="12" font-weight="600" fill="#3b6cf6">PROD, 98% at a limit of 20</text>
+  <path d="M78.0,338.0 L204.6,284.8 L331.1,253.5 L457.7,171.9 L584.3,142.4 L710.9,134.3 L837.4,165.0 L964.0,103.1" fill="none" stroke="#3b6cf6" stroke-width="3"/>
+  <circle cx="78.0" cy="338.0" r="5" fill="#3b6cf6"/>
+  <circle cx="204.6" cy="284.8" r="5" fill="#3b6cf6"/>
+  <circle cx="331.1" cy="253.5" r="5" fill="#3b6cf6"/>
+  <circle cx="457.7" cy="171.9" r="5" fill="#3b6cf6"/>
+  <circle cx="584.3" cy="142.4" r="5" fill="#3b6cf6"/>
+  <circle cx="710.9" cy="134.3" r="5" fill="#3b6cf6"/>
+  <circle cx="837.4" cy="165.0" r="5" fill="#3b6cf6"/>
+  <circle cx="964.0" cy="103.1" r="5" fill="#3b6cf6"/>
+  <text x="964.0" y="91.1" text-anchor="end" font-size="15" font-weight="600" fill="#3b6cf6">PROD, 98% at a limit of 20</text>
 
-  <text x="64.0" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">1</text>
-  <text x="176.3" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">2</text>
-  <text x="288.6" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">3</text>
-  <text x="400.9" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">5</text>
-  <text x="513.1" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">7</text>
-  <text x="625.4" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">10</text>
-  <text x="737.7" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">15</text>
-  <text x="850.0" y="388" text-anchor="middle" font-size="12" fill="#5b6a77">20</text>
-  <text x="457" y="418" text-anchor="middle" font-size="12" fill="#5b6a77">concurrencyLimit</text>
-  <text x="64" y="24" font-size="13" font-weight="600" fill="#16212b">vendor requests / second, median of 3 sweeps</text>
+  <text x="78.0" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">1</text>
+  <text x="204.6" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">2</text>
+  <text x="331.1" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">3</text>
+  <text x="457.7" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">5</text>
+  <text x="584.3" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">7</text>
+  <text x="710.9" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">10</text>
+  <text x="837.4" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">15</text>
+  <text x="964.0" y="408" text-anchor="middle" font-size="14" fill="#5b6a77">20</text>
+  <text x="521" y="448" text-anchor="middle" font-size="14" fill="#5b6a77">concurrencyLimit</text>
+  <text x="78" y="24" font-size="16" font-weight="600" fill="#16212b">vendor requests / second, median of 3 sweeps</text>
   </g>
 </svg>

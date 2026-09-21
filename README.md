@@ -15,12 +15,17 @@ Fan 10,000 company lookups out to a vendor that allows **five requests a second*
 > **TL;DR.** Little's Law sizes the queue, but only if you convert the vendor's **request** rate into a **run** rate first; skipping that gave 17 where the answer was 6. Then the same sweep disagreed across environments: `DEV` plateaued at **74%** of the vendor's allowance and never exceeded it, while `PROD` reached **98%**. A requested limit of 20 ran **13** in DEV and **20** in PROD, the latter above the documented single-queue cap for a free plan. And the time term isn't a constant: identical work took **3.4x longer** under load. Every figure below traces to raw console output kept in [`data/`](./data).
 
 <p align="center">
-  <img src="assets/throughput-curve.svg" width="49%"
+  <img src="assets/throughput-curve.svg" width="100%"
        alt="Throughput against concurrency limit. DEV flattens from a limit of 7 onward at about 74 percent of the vendor's allowance; PROD rises unevenly to 98 percent at a limit of 20." />
-  <img src="assets/where-the-time-goes.svg" width="49%"
+  <br/>
+  <em>The same sweep in two environments. The dashed line is DEV, flat from a limit of 7; the solid line is PROD, still climbing at 20.</em>
+</p>
+
+<p align="center">
+  <img src="assets/where-the-time-goes.svg" width="100%"
        alt="Of a 3.41 second run, 1.8 seconds is vendor work across three calls and the remaining 1.61 seconds is platform overhead. The concurrency slot is held for all of it." />
   <br/>
-  <em>The same sweep in two environments, and where a single run's three and a half seconds actually go.</em>
+  <em>Where a single run's three and a half seconds go. The slot is held for the whole bar, not just the blue.</em>
 </p>
 
 ---
