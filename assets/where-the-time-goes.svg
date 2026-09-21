@@ -1,33 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 240" width="760" height="240" role="img" aria-labelledby="t d" style="max-width:100%;height:auto">
   <title id="t">Where a run's three and a half seconds go</title>
   <desc id="d">Across eight uncontended runs a run holds its slot for a mean of 3.41 seconds. Only 1.8 seconds of that is vendor work, three calls of 600 milliseconds each. The other 1.61 seconds is everything else. The concurrency slot is held for all of it, so the sizing calculation needs 3.41, not 0.6.</desc>
+  <rect width="760" height="240" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="759" height="239" fill="none" stroke="#dbe2e8"/>
   <g font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="12">
 
-    <text x="60" y="30" font-size="13" font-weight="600" fill="currentColor">One run, three billed vendor calls</text>
+    <text x="60" y="30" font-size="13" font-weight="600" fill="#16212b">One run, three billed vendor calls</text>
 
     <!-- 60..700 spans 3.52s, so 181.8px per second -->
-    <rect x="60" y="52" width="122" height="46" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-opacity="0.35"/>
+    <rect x="60" y="52" width="122" height="46" fill="#eef2f5" stroke="#c7d1d9"/>
     <rect x="182" y="52" width="113" height="46" fill="#3b6cf6" fill-opacity="0.85"/>
-    <rect x="295" y="52" width="60" height="46" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-opacity="0.35"/>
+    <rect x="295" y="52" width="60" height="46" fill="#eef2f5" stroke="#c7d1d9"/>
     <rect x="355" y="52" width="113" height="46" fill="#3b6cf6" fill-opacity="0.85"/>
-    <rect x="468" y="52" width="60" height="46" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-opacity="0.35"/>
+    <rect x="468" y="52" width="60" height="46" fill="#eef2f5" stroke="#c7d1d9"/>
     <rect x="528" y="52" width="113" height="46" fill="#3b6cf6" fill-opacity="0.85"/>
-    <rect x="641" y="52" width="60" height="46" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-opacity="0.35"/>
+    <rect x="641" y="52" width="60" height="46" fill="#eef2f5" stroke="#c7d1d9"/>
 
     <text x="238" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">call 1</text>
     <text x="411" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">call 2</text>
     <text x="584" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">call 3</text>
 
-    <line x1="60" y1="120" x2="701" y2="120" stroke="currentColor" stroke-opacity="0.5"/>
-    <line x1="60" y1="114" x2="60" y2="126" stroke="currentColor" stroke-opacity="0.5"/>
-    <line x1="701" y1="114" x2="701" y2="126" stroke="currentColor" stroke-opacity="0.5"/>
-    <text x="380" y="141" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">3.41s mean, the whole time the concurrency slot is held</text>
+    <line x1="60" y1="120" x2="701" y2="120" stroke="#8494a1"/>
+    <line x1="60" y1="114" x2="60" y2="126" stroke="#8494a1"/>
+    <line x1="701" y1="114" x2="701" y2="126" stroke="#8494a1"/>
+    <text x="380" y="141" text-anchor="middle" font-size="12" font-weight="600" fill="#16212b">3.41s mean, the whole time the concurrency slot is held</text>
 
     <rect x="60" y="168" width="14" height="14" fill="#3b6cf6" fill-opacity="0.85"/>
-    <text x="82" y="180" fill="currentColor">1.80s of vendor work, 0.60s per call</text>
-    <rect x="330" y="168" width="14" height="14" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-opacity="0.35"/>
-    <text x="352" y="180" fill="currentColor">1.61s of everything else</text>
+    <text x="82" y="180" fill="#16212b">1.80s of vendor work, 0.60s per call</text>
+    <rect x="330" y="168" width="14" height="14" fill="#eef2f5" stroke="#c7d1d9"/>
+    <text x="352" y="180" fill="#16212b">1.61s of everything else</text>
 
-    <text x="60" y="214" font-size="12" fill="currentColor" fill-opacity="0.7">Size the queue on 3.41s, not on 0.60s. The slot is busy for both colours.</text>
+    <text x="60" y="214" font-size="12" fill="#5b6a77">Size the queue on 3.41s, not on 0.60s. The slot is busy for both colours.</text>
   </g>
 </svg>

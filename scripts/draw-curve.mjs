@@ -15,31 +15,33 @@ const y = (v) => T + ph - (v / 5.6) * ph;
 const path = (a) => a.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
 
 const grid = [1, 2, 3, 4, 5].map((v) =>
-  `<line x1="${L}" y1="${y(v)}" x2="${W - R}" y2="${y(v)}" stroke="currentColor" stroke-opacity="0.1"/>
-  <text x="${L - 10}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="currentColor" fill-opacity="0.6">${v}</text>`).join("\n  ");
+  `<line x1="${L}" y1="${y(v)}" x2="${W - R}" y2="${y(v)}" stroke="#e6ebef"/>
+  <text x="${L - 10}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#5b6a77">${v}</text>`).join("\n  ");
 
 const dots = (a, c) => a.map((v, i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="4" fill="${c}"/>`).join("\n  ");
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d" style="max-width:100%;height:auto">
   <title id="t">DEV plateaus at 74% of the vendor limit; PROD climbs to 98%</title>
   <desc id="d">Median vendor throughput across three sweeps per setting. In DEV the curve flattens between 3.67 and 3.70 requests per second from a limit of 7 onward, 74 percent of the vendor's allowance. In PROD the curve rises unevenly, dipping at a limit of 15, and reaches 4.89 at a limit of 20, brushing the vendor's 5 per second. The DEV plateau was the local dev worker, not the vendor.</desc>
+  <rect width="${W}" height="${H}" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="${W-1}" height="${H-1}" fill="none" stroke="#dbe2e8"/>
   <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
   ${grid}
-  <line x1="${L}" y1="${T + ph}" x2="${W - R}" y2="${T + ph}" stroke="currentColor" stroke-opacity="0.35"/>
-  <line x1="${L}" y1="${y(5)}" x2="${W - R}" y2="${y(5)}" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="5 4"/>
-  <text x="${W - R}" y="${y(5) - 7}" text-anchor="end" font-size="11" fill="currentColor" fill-opacity="0.65">vendor allows 5 req/s</text>
+  <line x1="${L}" y1="${T + ph}" x2="${W - R}" y2="${T + ph}" stroke="#c7d1d9"/>
+  <line x1="${L}" y1="${y(5)}" x2="${W - R}" y2="${y(5)}" stroke="#8494a1" stroke-dasharray="5 4"/>
+  <text x="${W - R}" y="${y(5) - 7}" text-anchor="end" font-size="11" fill="#5b6a77">vendor allows 5 req/s</text>
 
-  <path d="${path(DEV)}" fill="none" stroke="currentColor" stroke-opacity="0.45" stroke-width="2.5" stroke-dasharray="6 3"/>
-  ${dots(DEV, "currentColor")}
-  <text x="${x(7).toFixed(1)}" y="${(y(3.70) + 20).toFixed(1)}" text-anchor="end" font-size="12" font-weight="600" fill="currentColor" fill-opacity="0.65">DEV, flat at 74%</text>
+  <path d="${path(DEV)}" fill="none" stroke="#8494a1" stroke-width="2.5" stroke-dasharray="6 3"/>
+  ${dots(DEV, "#8494a1")}
+  <text x="${x(7).toFixed(1)}" y="${(y(3.70) + 20).toFixed(1)}" text-anchor="end" font-size="12" font-weight="600" fill="#5b6a77">DEV, flat at 74%</text>
 
   <path d="${path(PROD)}" fill="none" stroke="#3b6cf6" stroke-width="2.5"/>
   ${dots(PROD, "#3b6cf6")}
   <text x="${x(7).toFixed(1)}" y="${(y(4.89) - 12).toFixed(1)}" text-anchor="end" font-size="12" font-weight="600" fill="#3b6cf6">PROD, 98% at a limit of 20</text>
 
-  ${LIMITS.map((l, i) => `<text x="${x(i).toFixed(1)}" y="${T + ph + 22}" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.75">${l}</text>`).join("\n  ")}
-  <text x="${L + pw / 2}" y="${H - 12}" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.7">concurrencyLimit</text>
-  <text x="${L}" y="24" font-size="13" font-weight="600" fill="currentColor">vendor requests / second, median of 3 sweeps</text>
+  ${LIMITS.map((l, i) => `<text x="${x(i).toFixed(1)}" y="${T + ph + 22}" text-anchor="middle" font-size="12" fill="#5b6a77">${l}</text>`).join("\n  ")}
+  <text x="${L + pw / 2}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#5b6a77">concurrencyLimit</text>
+  <text x="${L}" y="24" font-size="13" font-weight="600" fill="#16212b">vendor requests / second, median of 3 sweeps</text>
   </g>
 </svg>
 `;
