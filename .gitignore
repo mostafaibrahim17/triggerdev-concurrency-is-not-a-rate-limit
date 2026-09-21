@@ -1,0 +1,17 @@
+node_modules/
+.trigger/
+.claude/
+data/*
+!data/*.txt
+.env
+.env.local
+*.log
+.DS_Store
+.firecrawl/
+
+# Working drafts and scratch files, kept out of the published repo.
+*.md
+!README.md
+!ARTICLE.md
+!TUTORIAL.md
+*.html

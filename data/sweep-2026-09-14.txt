@@ -1,0 +1,94 @@
+Raw console output of `REPEATS=3 START_OFFSET=500 npm run experiment`, 2026-09-14.
+Mock vendor: RATE=5, BURST=5, LATENCY_MS=600, three billed calls per company.
+Environment: DEV, SDK 4.5.10. 20 companies per sweep, ids 500-979 (no id reused,
+because the 30-day global idempotency key would dedupe the trigger silently).
+
+This is the source for the table in ARTICLE-LONG.md.
+
+limit  1 rep 1/3    72.3s  20/20 companies  0.28 companies/s  0.83 req/s  run=run_06ga2prm3lsise6fq88qa9r601
+limit  1 rep 2/3    70.4s  20/20 companies  0.28 companies/s  0.85 req/s  run=run_06ga2q5021f8rbukb4agdoij01
+limit  1 rep 3/3    70.4s  20/20 companies  0.28 companies/s  0.85 req/s  run=run_06ga2qe0rh4s8c2pjrafl5bh01
+  -> limit 1: median 0.85 req/s (range 0.83 to 0.85)
+
+limit  2 rep 1/3    38.5s  20/20 companies  0.52 companies/s  1.56 req/s  run=run_06ga2qn2gcteccnvqcif4jue01
+limit  2 rep 2/3    36.3s  20/20 companies  0.55 companies/s  1.65 req/s  run=run_06ga2qs5fnbnj8ugfg1q7paq01
+limit  2 rep 3/3    36.2s  20/20 companies  0.55 companies/s  1.66 req/s  run=run_06ga2r10l9nuli5i9hh9odu501
+  -> limit 2: median 1.65 req/s (range 1.56 to 1.66)
+
+limit  3 rep 1/3    28.3s  20/20 companies  0.71 companies/s  2.12 req/s  run=run_06ga2r5rm0velrguqai9stch01
+limit  3 rep 2/3    26.2s  20/20 companies  0.76 companies/s  2.29 req/s  run=run_06ga2r9riiro282jt4ed88n201
+limit  3 rep 3/3    26.2s  20/20 companies  0.76 companies/s  2.29 req/s  run=run_06ga2rdfui7i141lg9lcqqe101
+  -> limit 3: median 2.29 req/s (range 2.12 to 2.29)
+
+limit  5 rep 1/3    18.5s  20/20 companies  1.08 companies/s  3.24 req/s  run=run_06ga2rh4iooqf09te4blqvmg01
+limit  5 rep 2/3    18.2s  20/20 companies  1.10 companies/s  3.29 req/s  run=run_06ga2rjq54joldnpft0gvujh01
+limit  5 rep 3/3    18.4s  20/20 companies  1.09 companies/s  3.27 req/s  run=run_06ga2rmerf612p2gho5vfta301
+  -> limit 5: median 3.27 req/s (range 3.24 to 3.29)
+
+limit  7 rep 1/3    16.4s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2rp63m28ndajth07cdus01
+limit  7 rep 2/3    16.3s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2rrju2a3b1n9fhfq3ha501
+limit  7 rep 3/3    16.3s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2ru1ntd7bhm05r19aev401
+  -> limit 7: median 3.67 req/s (range 3.67 to 3.67)
+
+limit 10 rep 1/3    16.3s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2s0fj6brn0p2h0dhifdr01
+limit 10 rep 2/3    16.3s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2s2tdacepangj3j6eilq01
+limit 10 rep 3/3    16.3s  20/20 companies  1.23 companies/s  3.69 req/s  run=run_06ga2s5a825ho11t62pe9q2501
+  -> limit 10: median 3.67 req/s (range 3.67 to 3.69)
+
+limit 15 rep 1/3    16.3s  20/20 companies  1.22 companies/s  3.67 req/s  run=run_06ga2s7nr4e4h6tv739af7qu01
+limit 15 rep 2/3    16.2s  20/20 companies  1.23 companies/s  3.70 req/s  run=run_06ga2sa5elk51resbu41a8pa01
+limit 15 rep 3/3    16.2s  20/20 companies  1.23 companies/s  3.70 req/s  run=run_06ga2scit39nfeuuuh33d0e601
+  -> limit 15: median 3.70 req/s (range 3.67 to 3.70)
+
+limit 20 rep 1/3    16.4s  20/20 companies  1.22 companies/s  3.65 req/s  run=run_06ga2sf0fbnr1e9rgrm31fii01
+limit 20 rep 2/3    16.2s  20/20 companies  1.23 companies/s  3.70 req/s  run=run_06ga2shdpohfquj9kei0mlsk01
+limit 20 rep 3/3    16.2s  20/20 companies  1.23 companies/s  3.70 req/s  run=run_06ga2sjqks36io1v271egamr01
+  -> limit 20: median 3.70 req/s (range 3.65 to 3.70)
+
+
+=== summary ===
+limit | median req/s | range (3 sweeps) | implied run wall time
+    1 |         0.85 |         0.83 to 0.85 | 3.53s
+    2 |         1.65 |         1.56 to 1.66 | 3.64s
+    3 |         2.29 |         2.12 to 2.29 | 3.93s
+    5 |         3.27 |         3.24 to 3.29 | 4.59s
+    7 |         3.67 |         3.67 to 3.67 | 5.72s
+   10 |         3.67 |         3.67 to 3.69 | 8.17s
+   15 |         3.70 |         3.67 to 3.70 | 12.16s
+   20 |         3.70 |         3.65 to 3.70 | 16.22s
+
+peak at limit 15. Ranges overlap with 7, 10, 20, so the peak is not clean.
+
+
+=== npm run peak: what concurrency actually ran ===
+(both runs printed "queue reports concurrencyLimit <asked>, asked for <asked>"
+before triggering: the queue accepts the setting either way)
+asked for a limit of 10, 30 runs
+  peak actually executing at once: 9
+  mean executing time per run:     3.76s
+
+asked for a limit of 20, 40 runs
+  peak actually executing at once: 13
+  mean executing time per run:     4.88s
+
+So limits of 15 and 20 above were never reached. The rows for them are two more
+measurements of roughly 13.
+
+
+=== npm run runwall: uncontended slot time ===
+  uchicago.edu             slot 4.23s   executing 4.19s
+  about.com                slot 3.92s   executing 3.87s
+  dell.com                 slot 3.02s   executing 2.98s
+  jamanetwork.com          slot 3.53s   executing 3.49s
+  tripod.com               slot 3.13s   executing 3.09s
+  mitre.org                slot 3.26s   executing 3.23s
+  jd.com                   slot 3.19s   executing 3.14s
+  acs.org                  slot 2.98s   executing 2.93s
+
+over 8 uncontended runs:
+  vendor work (3 calls, configured)  1.80s
+  executing                          3.37s
+  slot held, created to finished     3.41s
+  platform overhead                  1.61s
+
+Little's Law: (5 req/s / 3 calls) x 3.41s = 5.7 concurrent runs

@@ -1,0 +1,15 @@
+queue reports concurrencyLimit 20, asked for 20
+
+asked for a limit of 20, 40 runs
+  peak actually executing at once: 20
+  mean executing time per run:     11.22s
+
+The limit of 20 was genuinely reached.
+====
+queue reports concurrencyLimit 10, asked for 10
+
+asked for a limit of 10, 30 runs
+  peak actually executing at once: 10
+  mean executing time per run:     5.80s
+
+The limit of 10 was genuinely reached.
