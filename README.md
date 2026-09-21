@@ -231,7 +231,8 @@ A sweep over company ids an earlier sweep already touched measures nothing: the 
 | `scripts/runwall.ts` | Uncontended run timings. |
 | `scripts/seed.ts` | Builds the company list from the Majestic Million. |
 | `scripts/run.ts` | Triggers the pipeline from outside, the way your backend would. |
-| [`ARTICLE-FINAL.md`](./ARTICLE-FINAL.md) | The write-up. |
+| [`ARTICLE.md`](./ARTICLE.md) | The write-up: the measurements and what they changed. |
+| [`TUTORIAL.md`](./TUTORIAL.md) | Build the same pipeline from an empty directory, step by step. |
 
 ---
 
@@ -278,7 +279,9 @@ Look up the same companies twice and the total doesn't move. That's the 30-day f
 
 ## The write-up
 
-[**`ARTICLE-FINAL.md`**](./ARTICLE-FINAL.md) is the companion piece: the two wrong answers, the sweep that killed one draft's thesis, the environment comparison that killed the next one's, and what the numbers say you should actually do.
+[**`ARTICLE.md`**](./ARTICLE.md) is the companion piece: the two wrong answers, the sweep that killed one draft's thesis, the environment comparison that killed the next one's, and what the numbers say you should actually do.
+
+If you would rather build it than read about it, [`TUTORIAL.md`](./TUTORIAL.md) walks the same pipeline from an empty directory.
 
 ### A note on the numbers
 
