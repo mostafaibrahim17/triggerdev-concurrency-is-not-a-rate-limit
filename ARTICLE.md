@@ -139,7 +139,11 @@ So the formula earns its keep as a floor. At 7 you get 84% of the vendor's rate,
 
 The docs disagree with themselves about why. The queues page says only executing runs count. The troubleshooting page says `DEQUEUED` runs count too. Their [incident report of 22 June 2026](https://trigger.dev/blog/incident-report-jun-22-2026) is blunter. "The worst one: queued runs held onto concurrency. When a run moves from the main queue into a per-worker queue but hasn't started yet, it still counts against your concurrency limit." My seven missing slots weren't missing. They were spoken for.
 
-`PROD` missed the other way and gave me all 20, on a free account documented at 10, where the queues page says "any single queue can have at most 10 concurrent runs". Twenty is that base times the documented 2.0x burst, so a single queue apparently can spend the whole environment's burst, and that sentence goes unenforced. Both ceilings lie. Count what executes.
+`PROD` missed the other way and gave me all 20, on a free account documented at 10, where the queues page says "any single queue can have at most 10 concurrent runs".
+
+![The Trigger.dev tasks list in a production environment, showing enrich-company with 20 runs in the Running column and 150 in the last 24 hours.](./assets/runs-mid-sweep.png)
+
+That is their dashboard, not mine, counting twenty. Twenty is that base times the documented 2.0x burst, so a single queue apparently can spend the whole environment's burst, and that sentence goes unenforced. Both ceilings lie. Count what executes.
 
 Those timestamps carry a number I wasn't looking for. Uncontended in PROD, a run spends 3.34 seconds executing. At a limit of 10, 5.80s. At 20, **11.22s. Identical work, 3.4 times slower, with nineteen other runs queueing for the same five tokens a second.**
 
