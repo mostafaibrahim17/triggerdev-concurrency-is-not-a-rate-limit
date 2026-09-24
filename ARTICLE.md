@@ -1,7 +1,7 @@
 ---
 title: "I measured my queue in DEV. Production disagreed."
 slug: concurrency-is-not-a-rate-limit
-image: ./assets/thumbnail.svg
+image: ./assets/thumbnail.png
 description: "In DEV the pipeline saturated at 74% of the vendor limit and never reached the concurrency it asked for. In PROD both reversed. A concurrency limit is not a rate limit, and the numbers you convert it with do not survive a change of environment."
 ---
 
