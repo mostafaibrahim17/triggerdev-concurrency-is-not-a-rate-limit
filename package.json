@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "marked": "^12.0.2",
     "trigger.dev": "^4.5.10",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"

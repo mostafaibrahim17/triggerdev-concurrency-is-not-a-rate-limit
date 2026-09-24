@@ -104,7 +104,7 @@
   <!-- 4. api -->
   <g>
     <rect class="card" x="716" y="112" width="144" height="74" rx="4" stroke-width="1"/>
-    <text class="ink h" x="788" y="140" text-anchor="middle">Third-party API</text>
+    <text class="ink h" x="788" y="140" text-anchor="middle">Mock vendor (in repo)</text>
     <text class="muted s" x="788" y="159" text-anchor="middle">5 requests / second</text>
     <text class="muted xs" x="788" y="175" text-anchor="middle">600ms per call</text>
     <text class="faint lbl" x="788" y="205" text-anchor="middle">THE CONSTRAINT</text>
