@@ -13,7 +13,7 @@ Looking up one company takes three calls to it, one for the record, one to verif
 
 The usual answer is a queue with a concurrency limit. That works, but `concurrencyLimit` doesn't limit your rate. It limits how many runs execute at once, and converting one into the other is most of the work. I got the conversion wrong twice and shipped a limit two and a half times too big. Then I measured it properly. The corrected formula was fine. **What moved was the numbers I was feeding it.** Executing time stretched 3.4x under production load for work that never changed, and my `DEV` environment disagreed with production about nearly everything else.
 
-![Ten thousand companies fan out into a queue that admits a few runs at a time to a vendor allowing five requests per second. Rejected calls return a 429 with a reset timestamp and wait, holding their concurrency slot.](./assets/architecture.svg)
+![Ten thousand companies feed a queue with concurrencyLimit 2. Two runs occupy slots, each making three vendor calls against an allowance of five requests a second. A rejected call returns a 429 with a reset timestamp, and the waiting run keeps its slot.](./assets/fig-01-concurrency-vs-rate.png)
 
 ## `concurrencyLimit` is not a rate limit
 
@@ -38,17 +38,11 @@ Both terms have to be in the same currency. That is where this came unstuck, twi
 
 The first version made one call per run. Vendor allows 5 req/s, each call takes 200ms, so `5 × 0.2 = 1`, pick 2, let retries cover the overshoot. Wrong, and it took a measurement to see why. **That 0.2 is the vendor's response time. The formula wants how long the run holds its slot**, which was 2.2 seconds.
 
-Then the pipeline grew to three billed calls a company:
+Then the pipeline grew to three billed calls a company, and I measured where a run's time actually goes.
 
-| Where the time goes | Duration |
-| --- | ---: |
-| Three vendor calls at 600ms | 1.80s |
-| Time the run held its slot | **3.41s** in DEV, 3.60s in PROD |
-| Everything else | 1.61s in DEV, 1.80s in PROD |
+![A run holds its slot for 3.41 seconds in DEV and 3.60 in PROD. Three 600ms vendor calls account for 1.80 seconds of that; the remainder is 1.61 seconds in DEV and 1.80 in PROD. Dividing the vendor's 5 requests a second by 3 calls per run and multiplying by 3.41 gives about 5.7 concurrent runs.](./assets/fig-02-slot-time.png)
 
-PROD reaches the mock through a tunnel, so its column carries a network round trip DEV's doesn't. Both figures are means of eight uncontended runs, and PROD's includes one cold start.
-
-![Of a 3.41 second run, 1.8 seconds is vendor work across three calls. The remaining 1.61 seconds is platform overhead, and the concurrency slot is held for all of it.](./assets/where-the-time-goes.svg)
+Those are means of eight uncontended runs per environment, read from each run's own `createdAt` and `finishedAt`. PROD reaches the mock through a tunnel, so its figure carries a network round trip DEV's doesn't, and it includes one cold start.
 
 So I wrote `5 × 3.4 ≈ 17`, called it 15 because that felt safer, and shipped it. That was the second mistake and the worse one, and it survived a code review, my own included.
 
@@ -103,7 +97,7 @@ Eight limits, three sweeps each, 20 companies a sweep, SDK 4.5.10, medians below
 
 One caveat that matters for reading the table. The script times each sweep with a two-second poll, so every elapsed figure lands on a two-second grid. That's coarse, and it is the same instrument that killed draft one.
 
-![In DEV the throughput curve flattens between 3.67 and 3.70 requests per second from a limit of 7 onward, 74 percent of the vendor's allowance. In PROD it rises unevenly, dipping at 15, to 4.89 at a limit of 20, brushing the vendor's 5.](./assets/throughput-curve.svg)
+![Throughput against requested concurrency limit in both environments, with min-max whiskers on the PROD sweeps. DEV flattens at 3.70 requests a second from a limit of 7 onward. PROD rises unevenly, dipping at 15, to 4.89 at a limit of 20 against a vendor allowance of 5.](./assets/fig-03-dev-vs-prod.png)
 
 | `concurrencyLimit` | DEV req/s | PROD req/s | PROD range |
 | ---: | ---: | ---: | :--- |
@@ -130,10 +124,7 @@ So the formula earns its keep as a floor. At 7 you get 84% of the vendor's rate,
 
 `concurrencyLimit` is a number you request. `queues.retrieve` reads it back whether or not a single run is using it, so I counted instead. Every run records when it started and finished. Lay the intervals on a timeline, count the most that ever overlapped.
 
-| asked for | DEV reached | PROD reached |
-| ---: | ---: | ---: |
-| 10 | 9 | 10 |
-| 20 | **13** | **20** |
+![Peak executing runs counted from start and finish timestamps. At a requested limit of 10, DEV reached 9 and PROD reached 10. At a requested limit of 20, DEV reached 13 and PROD reached all 20.](./assets/fig-04-requested-vs-observed.png)
 
 **A limit the platform accepts is not a limit it reaches.** DEV gave me 13 of 20, which makes the 15 and 20 rows of that sweep two more readings of about 13.
 
