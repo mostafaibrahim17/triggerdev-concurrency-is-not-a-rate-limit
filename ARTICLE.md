@@ -38,7 +38,7 @@ Both terms have to be in the same currency. That is where this came unstuck, twi
 
 The first version made one call per run. Vendor allows 5 req/s, each call takes 200ms, so `5 × 0.2 = 1`, pick 2, let retries cover the overshoot. Wrong, and it took a measurement to see why. **That 0.2 is the vendor's response time. The formula wants how long the run holds its slot**, which was 2.2 seconds.
 
-Then the pipeline grew to three billed calls a company, and I measured where a run's time actually goes.
+Then the pipeline grew to three billed 600ms calls a company, and I measured where a run's time actually goes.
 
 ![A run holds its slot for 3.41 seconds in DEV and 3.60 in PROD. Three 600ms vendor calls account for 1.80 seconds of that; the remainder is 1.61 seconds in DEV and 1.80 in PROD. Dividing the vendor's 5 requests a second by 3 calls per run and multiplying by 3.41 gives about 5.7 concurrent runs.](./assets/fig-02-slot-time.png)
 
@@ -93,11 +93,11 @@ And the part that matters, which is documented. A run doesn't checkpoint until 6
 
 ## The number you feed the formula doesn't hold still
 
-Eight limits, three sweeps each, 20 companies a sweep, SDK 4.5.10, medians below with the full range. Run once in `DEV`, which routes work through my own machine, then again in a free-plan `PROD` environment reaching the mock through a tunnel, whose round trip PROD's numbers carry.
+Eight limits, three sweeps each, 20 companies a sweep, SDK 4.5.10, medians below with PROD's full range. Run once in `DEV`, which routes work through my own machine, then again in a free-plan `PROD` environment reaching the mock through a tunnel, whose round trip PROD's numbers carry.
 
 One caveat that matters for reading the table. The script times each sweep with a two-second poll, so every elapsed figure lands on a two-second grid. That's coarse, and it is the same instrument that killed draft one.
 
-![Throughput against requested concurrency limit in both environments, with min-max whiskers on the PROD sweeps. DEV flattens at 3.70 requests a second from a limit of 7 onward. PROD rises unevenly, dipping at 15, to 4.89 at a limit of 20 against a vendor allowance of 5.](./assets/fig-03-dev-vs-prod.png)
+![Throughput against requested concurrency limit in both environments, with min-max whiskers on the PROD sweeps. DEV flattens between 3.67 and 3.70 requests a second from a limit of 7 onward. PROD rises unevenly, dipping at 15, to 4.89 at a limit of 20 against a vendor allowance of 5.](./assets/fig-03-dev-vs-prod.png)
 
 | `concurrencyLimit` | DEV req/s | PROD req/s | PROD range |
 | ---: | ---: | ---: | :--- |
