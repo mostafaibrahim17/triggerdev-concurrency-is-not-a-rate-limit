@@ -199,7 +199,13 @@ Then try both paths:
 
 ## Reproduce the measurements
 
+The sweep burns 480 fresh companies starting at offset 500, so seed past that
+first or it stops on the first limit. Leave `npm run mock-api` and `npm run dev`
+running from above.
+
 ```bash
+npm run seed -- --limit 2000   # the sweep needs ids 500-979; the 500 default runs out
+
 npm run experiment   # the sweep: 8 limits x 3 repeats, both tables above
 npm run peak         # how many runs actually executed at once
 npm run runwall      # uncontended run timings

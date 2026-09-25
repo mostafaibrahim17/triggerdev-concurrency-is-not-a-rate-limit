@@ -15,12 +15,6 @@
     "deploy": "trigger.dev deploy",
     "typecheck": "tsc --noEmit",
     "experiment": "tsx scripts/experiment.ts",
-    "starvation": "tsx scripts/starvation.ts",
-    "keyed": "tsx scripts/keyed.ts",
-    "depth": "tsx scripts/depth.ts",
-    "whale": "tsx scripts/whale.ts",
-    "slots": "tsx scripts/slots.ts",
-    "divergence": "tsx scripts/divergence.ts",
     "runwall": "tsx scripts/runwall.ts",
     "peak": "tsx scripts/peak.ts"
   },
